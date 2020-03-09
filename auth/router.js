@@ -41,7 +41,7 @@ router.post("/login", (request, response, next) => {
     next(error);
   }
 });
-router.get("/secret-endpoint", (req, res) => {
+router.post("/secret-endpoint", (req, res) => {
   const auth =
     req.headers.authorization && req.headers.authorization.split(" ");
   if (auth && auth[0] === "Bearer" && auth[1]) {
@@ -62,7 +62,7 @@ router.get("/secret-endpoint", (req, res) => {
     });
   }
 });
-router.get("/secret-endpoint", auth, (req, res) => {
+router.post("/secret-endpoint", auth, (req, res) => {
   res.send({
     message: `Thanks for visiting the secret endpoint ${req.user.email}.`
   });
