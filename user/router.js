@@ -13,6 +13,7 @@ router.post("/user", (request, response, next) => {
     .then(user => response.send(user))
     .catch(next);
 });
+
 router.get("/user", async (request, response, next) => {
   try {
     console.log("is this users", request);
