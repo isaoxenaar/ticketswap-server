@@ -4,6 +4,7 @@ const bcrypt = require("bcryptjs");
 const router = new Router();
 
 router.post("/user", (request, response, next) => {
+  console.log("New User");
   const password = bcrypt.hashSync(request.body.password, 10);
 
   const user = { ...request.body, password };
