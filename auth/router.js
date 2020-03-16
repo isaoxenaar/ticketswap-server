@@ -68,4 +68,5 @@ router.get("/secret-endpoint", auth, (req, res) => {
     message: `Thanks for visiting the secret endpoint ${req.user.email}.`
   });
 });
+
 module.exports = router;

@@ -4,9 +4,9 @@ const userRouter = require("./user/router");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const port = process.env.PORT || 4001;
-const stream = require("stream");
+const stream = require("./stream");
 const db = require("./db");
-const User = require("./model");
+const { User } = require("./user/model");
 
 const app = express();
 app.use(cors());
