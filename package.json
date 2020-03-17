@@ -14,13 +14,9 @@
     "bcrypt": "^4.0.1",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
-    "docker": "^1.0.0",
     "express": "^4.17.1",
-    "install": "^0.13.0",
     "json-sse": "0.0.0",
     "jsonwebtoken": "^8.5.1",
-    "nodemon": "^2.0.2",
-    "npm": "^6.14.2",
     "pg": "^7.18.2",
     "sequelize": "^5.21.5"
   }

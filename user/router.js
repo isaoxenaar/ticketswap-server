@@ -2,6 +2,7 @@ const { Router } = require("express");
 const User = require("./model");
 const bcrypt = require("bcryptjs");
 const router = new Router();
+const Event = require("../Event/model");
 
 router.post("/user", (request, response, next) => {
   console.log("New User");
@@ -17,7 +18,7 @@ router.post("/user", (request, response, next) => {
 router.get("/user", async (request, response, next) => {
   try {
     console.log("is this users", request);
-    const users = await User.findAll(request.body, { include: [Image] });
+    const users = await User.findAll(request.body, { include: [Event] });
     response.send(users);
   } catch (error) {
     next(error);
