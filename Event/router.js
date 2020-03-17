@@ -22,8 +22,7 @@ router.post("/event", auth, async (request, response, next) => {
       name: body.name,
       description: body.description,
       pictureurl: body.pictureurl,
-      enddate: body.enddate,
-      userId: user.id
+      enddate: body.enddate
     });
     response.send(event);
   } catch (error) {
