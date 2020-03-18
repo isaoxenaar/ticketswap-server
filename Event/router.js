@@ -22,12 +22,25 @@ router.post("/event", auth, async (request, response, next) => {
       name: body.name,
       description: body.description,
       pictureurl: body.pictureurl,
-      enddate: body.enddate
+      enddate: body.enddate,
+      userId: request.user.id
     });
     response.send(event);
   } catch (error) {
     next(error);
   }
 });
+
+// router.post("/image", auth, async (request, response, next) => {
+//   console.log("request.user", request.user);
+//   try {
+//     const { url, title } = request.body;
+//     const entity = { url, title, userId: request.user.id };
+//     const image = await Image.create(entity);
+//     response.send(image);
+//   } catch (error) {
+//     next(error);
+//   }
+// });
 
 module.exports = router;

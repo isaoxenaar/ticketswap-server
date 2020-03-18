@@ -19,10 +19,13 @@ const Event = db.define("event", {
   enddate: {
     type: Sequelize.STRING,
     allowNull: false
+  },
+  userId: {
+    type: Sequelize.INTEGER
   }
 });
 
-// Event.belongsTo(User);
-// User.hasMany(Event);
+Event.belongsTo(User);
+User.hasMany(Event);
 
 module.exports = Event;
