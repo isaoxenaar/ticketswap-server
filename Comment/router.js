@@ -1,24 +1,24 @@
 const express = require("express");
-const Event = require("./model");
+const Comment = require("./model");
 const User = require("../user/model");
 const router = express.Router();
 const auth = require("../auth/middleware");
 
-router.get("/event", async (request, response, next) => {
+router.get("/comment", async (request, response, next) => {
   try {
-    const events = await Event.findAll();
-    response.send(events);
+    const comments = await Comment.findAll();
+    response.send(comments);
   } catch (error) {
     next(error);
   }
 });
 
-router.post("/event", auth, async (request, response, next) => {
+router.post("/comment", auth, async (request, response, next) => {
   try {
     console.log("this is body", request.body);
     console.log("this is user", request.user);
     const { body, user } = request;
-    const event = await Event.create({
+    const Comment = await Comment.create({
       name: body.name,
       description: body.description,
       pictureurl: body.pictureurl,
