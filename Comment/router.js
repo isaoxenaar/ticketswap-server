@@ -19,10 +19,7 @@ router.post("/comment", auth, async (request, response, next) => {
     console.log("this is user", request.user);
     const { body, user } = request;
     const Comment = await Comment.create({
-      name: body.name,
-      description: body.description,
-      pictureurl: body.pictureurl,
-      enddate: body.enddate,
+      text: body.text,
       userId: request.user.id
     });
     response.send(event);

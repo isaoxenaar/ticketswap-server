@@ -5,7 +5,6 @@ const router = new Router();
 const Event = require("../Event/model");
 
 router.post("/user", (request, response, next) => {
-  console.log("New User");
   const password = bcrypt.hashSync(request.body.password, 10);
 
   const user = { ...request.body, password };
@@ -17,7 +16,6 @@ router.post("/user", (request, response, next) => {
 
 router.get("/user", async (request, response, next) => {
   try {
-    console.log("is this users", request);
     const users = await User.findAll(request.body, { include: [Event] });
     response.send(users);
   } catch (error) {

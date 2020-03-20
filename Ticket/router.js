@@ -16,8 +16,6 @@ router.get("/ticket", async (request, response, next) => {
 
 router.post("/ticket", auth, async (request, response, next) => {
   try {
-    console.log("this is body", request.body);
-    console.log("this is event", request);
     const { body, user } = request;
     const ticket = await Ticket.create({
       logo: body.logo,
@@ -32,7 +30,7 @@ router.post("/ticket", auth, async (request, response, next) => {
 });
 
 router.put(
-  "/image/user/:id", // path with an id parameter
+  "/ticket/:id", // path with an id parameter
   async (request, response, next) => {
     // handler callback
     try {
@@ -40,13 +38,13 @@ router.put(
       const { id } = request.params;
 
       // find the record you want to change with a promise
-      const image = await Image.findByPk(id);
+      const ticket = await Ticket.findByPk(id);
 
       console.log("request.body test:", request.body);
       //console.log('family test:', .dataValues)
 
       // update that one record with a promise
-      const updated = await image.update(request.body);
+      const updated = await ticket.update(request.body);
 
       // send object as response
       response.send(updated);

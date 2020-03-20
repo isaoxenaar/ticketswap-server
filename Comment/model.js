@@ -13,16 +13,13 @@ const Comment = db.define("comment", {
   },
   userId: {
     type: Sequelize.INTEGER
-  },
-  ticketId: {
-    type: Sequelize.INTEGER
   }
 });
 
 Comment.belongsTo(Ticket);
-Ticket.hasMany(Event);
+Ticket.hasMany(Comment);
 
 Comment.belongsTo(User);
 User.hasMany(Comment);
 
-module.exports = Ticket;
+module.exports = Comment;
