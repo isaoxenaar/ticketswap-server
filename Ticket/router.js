@@ -29,29 +29,18 @@ router.post("/ticket", auth, async (request, response, next) => {
   }
 });
 
-router.put(
-  "/ticket/:id", // path with an id parameter
-  async (request, response, next) => {
-    // handler callback
-    try {
-      // deicde what parameters you want
-      const { id } = request.params;
+router.put("/ticket/:id", async (request, response, next) => {
+  try {
+    const { id } = request.params;
 
-      // find the record you want to change with a promise
-      const ticket = await Ticket.findByPk(id);
+    const ticket = await Ticket.findByPk(id);
 
-      console.log("request.body test:", request.body);
-      //console.log('family test:', .dataValues)
+    const updated = await ticket.update(request.body);
 
-      // update that one record with a promise
-      const updated = await ticket.update(request.body);
-
-      // send object as response
-      response.send(updated);
-    } catch (error) {
-      next(error);
-    }
+    response.send(updated);
+  } catch (error) {
+    next(error);
   }
-);
+});
 
 module.exports = router;

@@ -15,8 +15,6 @@ router.get("/event", async (request, response, next) => {
 
 router.post("/event", auth, async (request, response, next) => {
   try {
-    console.log("this is body", request.body);
-    console.log("this is user", request.user);
     const { body, user } = request;
     const event = await Event.create({
       name: body.name,

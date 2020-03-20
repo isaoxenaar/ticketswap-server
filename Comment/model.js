@@ -4,6 +4,10 @@ const User = require("../user/model");
 const Ticket = require("../Ticket/model");
 
 const Comment = db.define("comment", {
+  author: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
   text: {
     type: Sequelize.STRING,
     allowNull: false
