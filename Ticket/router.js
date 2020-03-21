@@ -16,12 +16,14 @@ router.get("/ticket", async (request, response, next) => {
 
 router.post("/ticket", auth, async (request, response, next) => {
   try {
-    const { body, user } = request;
+    const { body, user, event } = request;
+    console.log("this is event in ticketpost", request);
     const ticket = await Ticket.create({
       logo: body.logo,
       description: body.description,
       price: body.price,
-      userId: request.user.id
+      userId: request.user.id,
+      eventId: body.eventId
     });
     response.send(ticket);
   } catch (error) {

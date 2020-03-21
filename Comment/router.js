@@ -15,7 +15,7 @@ router.get("/comment", async (request, response, next) => {
 
 router.post("/comment", auth, async (request, response, next) => {
   try {
-    const { body, user } = request;
+    const { body, user, ticket } = request;
     const Comment = await Comment.create({
       text: body.text,
       userId: request.user.id
