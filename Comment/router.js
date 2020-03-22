@@ -15,12 +15,15 @@ router.get("/comment", async (request, response, next) => {
 
 router.post("/comment", auth, async (request, response, next) => {
   try {
-    const { body, user, ticket } = request;
-    const Comment = await Comment.create({
+    const { body } = request;
+    console.log("this is ticket");
+    const comment = await Comment.create({
+      author: body.author,
       text: body.text,
-      userId: request.user.id
+      userId: request.user.id,
+      ticketId: body.ticketId
     });
-    response.send(event);
+    response.send(comment);
   } catch (error) {
     next(error);
   }
