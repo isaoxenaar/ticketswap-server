@@ -1,7 +1,8 @@
 const Sequelize = require("sequelize");
 const db = require("../db");
-const User = require("../user/model");
 const Ticket = require("../Ticket/model");
+const User = require("../user/model");
+const Event = require("../Event/model");
 
 const Comment = db.define("comment", {
   author: {
@@ -17,6 +18,9 @@ const Comment = db.define("comment", {
   },
   userId: {
     type: Sequelize.INTEGER
+  },
+  eventId: {
+    type: Sequelize.INTEGER
   }
 });
 
@@ -25,5 +29,8 @@ Ticket.hasMany(Comment);
 
 Comment.belongsTo(User);
 User.hasMany(Comment);
+
+Comment.belongsTo(Event);
+Event.hasMany(Comment);
 
 module.exports = Comment;

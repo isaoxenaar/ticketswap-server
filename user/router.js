@@ -1,8 +1,8 @@
 const { Router } = require("express");
-const User = require("./model");
 const bcrypt = require("bcryptjs");
 const router = new Router();
 const Event = require("../Event/model");
+const User = require("./model");
 
 router.post("/user", (request, response, next) => {
   const password = bcrypt.hashSync(request.body.password, 10);

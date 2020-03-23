@@ -1,8 +1,8 @@
 const express = require("express");
+const router = express.Router();
 const Ticket = require("./model");
 const Event = require("../Event/model");
 const User = require("../user/model");
-const router = express.Router();
 const auth = require("../auth/middleware");
 
 router.get("/ticket", async (request, response, next) => {
@@ -16,8 +16,7 @@ router.get("/ticket", async (request, response, next) => {
 
 router.post("/ticket", auth, async (request, response, next) => {
   try {
-    const { body, user, event } = request;
-    console.log("this is event in ticketpost", request);
+    const { body } = request;
     const ticket = await Ticket.create({
       logo: body.logo,
       description: body.description,

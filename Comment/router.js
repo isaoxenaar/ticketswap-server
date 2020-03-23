@@ -1,7 +1,6 @@
 const express = require("express");
-const Comment = require("./model");
-const User = require("../user/model");
 const router = express.Router();
+const Comment = require("./model");
 const auth = require("../auth/middleware");
 
 router.get("/comment", async (request, response, next) => {
@@ -16,12 +15,12 @@ router.get("/comment", async (request, response, next) => {
 router.post("/comment", auth, async (request, response, next) => {
   try {
     const { body } = request;
-    console.log("this is ticket");
     const comment = await Comment.create({
       author: body.author,
       text: body.text,
       userId: request.user.id,
-      ticketId: body.ticketId
+      ticketId: body.ticketId,
+      eventId: body.eventId
     });
     response.send(comment);
   } catch (error) {

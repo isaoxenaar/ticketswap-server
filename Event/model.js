@@ -5,20 +5,16 @@ const User = require("../user/model");
 const Event = db.define("event", {
   name: {
     type: Sequelize.STRING,
-    allowNull: false,
     unique: true
   },
   pictureurl: {
-    type: Sequelize.STRING,
-    allowNull: false
+    type: Sequelize.STRING
   },
   description: {
-    type: Sequelize.STRING,
-    allowNull: false
+    type: Sequelize.STRING
   },
   enddate: {
-    type: Sequelize.STRING,
-    allowNull: false
+    type: Sequelize.STRING
   },
   userId: {
     type: Sequelize.INTEGER
